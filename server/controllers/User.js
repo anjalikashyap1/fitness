@@ -7,7 +7,7 @@ import Workout from "../models/Workout.js";
 
 dotenv.config();
 
-export const UserRegister = async (req, res, next) => {
+export const UserRegister = async (req, res, next) =>  {
   try {
     const { email, password, name, img } = req.body;
 
