@@ -7,7 +7,14 @@ import UserRoutes from "./routes/User.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// Configure CORS
+const corsOptions = {
+  origin: 'https://dynamichealth.netlify.app', // Your frontend application's origin
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true })); // for form data
 
@@ -25,7 +32,7 @@ app.use((err, req, res, next) => {
 
 app.get("/", async (req, res) => {
   res.status(200).json({
-    message: "Hello developers from GFG",
+    message: "Hello developer",
   });
 });
 
