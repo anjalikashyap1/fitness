@@ -8,12 +8,13 @@ dotenv.config();
 
 const app = express();
 
-// Configure CORS
-const corsOptions = {
-  origin: 'https://dynamichealth.netlify.app', // Your frontend application's origin
-  optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+// Enable CORS
+app.use(cors({
+  origin: 'https://dynamichealth.netlify.app', // Replace with your client's origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Enable cookies to be sent across domains
+  allowedHeaders: 'Content-Type, Authorization'
+}));
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true })); // for form data
